@@ -6,5 +6,6 @@ namespace TuseAwesomeApiWeb.Repo.IRepo
     {
         void Save();
         public IITemRepository ITemRepository { get; }
+        public IUser UserRepository { get; }
     }
 }
