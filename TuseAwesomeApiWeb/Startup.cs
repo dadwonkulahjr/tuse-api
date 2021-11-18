@@ -24,7 +24,7 @@ namespace TuseAwesomeApiWeb
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers()
+            services.AddControllersWithViews()
                 .AddXmlSerializerFormatters();
 
 
@@ -55,6 +55,7 @@ namespace TuseAwesomeApiWeb
             }
 
             app.UseHttpsRedirection();
+            app.UseStaticFiles();
 
             app.UseRouting();
             
@@ -63,8 +64,9 @@ namespace TuseAwesomeApiWeb
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
                 endpoints.MapRazorPages();
+                endpoints.MapControllers();
+                
             });
         }
     }

@@ -9,8 +9,9 @@ namespace TuseAwesomeApiWeb.Pages
 {
     public class IndexModel : PageModel
     {
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            return RedirectToPage("/Admin/User/Index");
         }
     }
 }

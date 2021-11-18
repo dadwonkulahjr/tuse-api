@@ -74,3 +74,4 @@ C:\Users\Dad S. Wonkulah Jr\source\repos\TuseAwesomeApi\TuseAwesomeApiWeb\bin\De
 C:\Users\Dad S. Wonkulah Jr\source\repos\TuseAwesomeApi\TuseAwesomeApiWeb\bin\Debug\net5.0\TuseAwesomeApiWeb.Views.pdb
 C:\Users\Dad S. Wonkulah Jr\source\repos\TuseAwesomeApi\TuseAwesomeApiWeb\obj\Debug\net5.0\TuseAwesomeApiWeb.Views.pdb
 C:\Users\Dad S. Wonkulah Jr\source\repos\TuseAwesomeApi\TuseAwesomeApiWeb\obj\Debug\net5.0\Razor\Pages\Index.cshtml.g.cs
+C:\Users\Dad S. Wonkulah Jr\source\repos\TuseAwesomeApi\TuseAwesomeApiWeb\obj\Debug\net5.0\Razor\Pages\Admin\User\Index.cshtml.g.cs
