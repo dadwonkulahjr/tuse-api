@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Linq;
+using TuseAwesomeApiWeb.Models;
 using TuseAwesomeApiWeb.Repo.IRepo;
 
 namespace TuseAwesomeApiWeb.Controllers
@@ -14,9 +17,11 @@ namespace TuseAwesomeApiWeb.Controllers
             _unitOfWork = unitOfWork;
         }
         [HttpGet]
-        public ActionResult RetrievedAllUserData()
+        public IEnumerable<User> RetrievedAllUserData()
         {
-            return Json(new { name = "iamtuse", occupation = "Developer!" });
+            return _unitOfWork.UserRepository.GetAllItems()
+                                    .OrderBy(x => x.Username)
+                                    .ToList();
         }
     }
 }
