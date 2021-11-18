@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
+using TuseAwesomeApiWeb.Dtos;
+using TuseAwesomeApiWeb.Extentions;
 using TuseAwesomeApiWeb.Models;
 using TuseAwesomeApiWeb.Repo.IRepo;
 
@@ -17,9 +19,10 @@ namespace TuseAwesomeApiWeb.Controllers
             _unitOfWork = unitOfWork;
         }
         [HttpGet]
-        public IEnumerable<User> RetrievedAllUserData()
+        public IEnumerable<UserDto> RetrievedAllUserData()
         {
             return _unitOfWork.UserRepository.GetAllItems()
+                                    .Select(x => x.AsUserDto())
                                     .OrderBy(x => x.Username)
                                     .ToList();
         }

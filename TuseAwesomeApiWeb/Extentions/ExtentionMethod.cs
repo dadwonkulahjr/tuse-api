@@ -15,5 +15,16 @@ namespace TuseAwesomeApiWeb.Extentions
                 DateCreated = item.DateCreated
             };
         }
+
+        public static UserDto AsUserDto(this User user)
+        {
+            return new UserDto()
+            {
+                Id = user.Id,
+                Username = user.Username,
+                Password = user.Password,
+                Email = user.Password
+            };
+        }
     }
 }
