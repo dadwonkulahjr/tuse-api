@@ -11,9 +11,12 @@ namespace TuseAwesomeApiWeb.Repo
         {
             _dbContext = applicationDbContext;
             ITemRepository = new ITemRepo(_dbContext);
+            UserRepository = new UserRepository(_dbContext);
         }
 
         public IITemRepository ITemRepository { get; private set; }
+
+        public IUser UserRepository { get; private set; }
 
         public void Dispose()
         {
