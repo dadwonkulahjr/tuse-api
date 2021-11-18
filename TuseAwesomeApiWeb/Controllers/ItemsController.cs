@@ -69,16 +69,15 @@ namespace TuseAwesomeApiWeb.Controllers
         [HttpPut("{id}")]
         public ActionResult UpdateItem(Guid id, UpdateItemDto updateItemDto)
         {
-            var itemFound = _unitOfWork.ITemRepository.GetSingleOrDefaultItem(id);
+            var itemFound = _unitOfWork.ITemRepository.FilterItems(x => x.Id == id).FirstOrDefault();
 
-            if(itemFound is null)
+            if (itemFound is null)
             {
                 return NotFound();
             }
 
             Item item = itemFound with
             {
-                Id = id,
                 Name = updateItemDto.Name,
                 Price = updateItemDto.Price,
                 DateCreated = updateItemDto.DateCreated
@@ -88,5 +87,21 @@ namespace TuseAwesomeApiWeb.Controllers
 
             return NoContent();
         }
+
+        [HttpDelete("{id}")]
+        public ActionResult Delete(Guid id)
+        {
+            var findItemToDelete = _unitOfWork.ITemRepository.GetSingleOrDefaultItem(id);
+            if(findItemToDelete is null)
+            {
+                return NotFound();
+            }
+
+            _unitOfWork.ITemRepository.Delete(findItemToDelete);
+            _unitOfWork.Save();
+
+            return NoContent();
+        }
+
     }
 }

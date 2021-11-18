@@ -15,5 +15,9 @@ namespace TuseAwesomeApiWeb.Repo.IRepo
         T GetSingleOrDefaultItem(Guid id);
 
         T AddAnItem(T itemToAdd);
+
+        void Delete(int id);
+        void Delete(T typeToDelete);
+
     }
 }

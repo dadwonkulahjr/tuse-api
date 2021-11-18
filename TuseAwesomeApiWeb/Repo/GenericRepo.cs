@@ -21,6 +21,21 @@ namespace TuseAwesomeApiWeb.Repo
             return itemToAdd;
         }
 
+        public void Delete(int id)
+        {
+            var findEntity = _query.Find(id);
+
+            if (findEntity != null)
+            {
+                _query.Remove(findEntity);
+            }
+        }
+
+        public void Delete(TEntity typeToDelete)
+        {
+            _context.Remove(typeToDelete);
+        }
+
         public IEnumerable<TEntity> FilterItems(Func<TEntity, bool> filterItem = null)
         {
             IQueryable<TEntity> myQuery = _query;
@@ -44,7 +59,7 @@ namespace TuseAwesomeApiWeb.Repo
             IQueryable<TEntity> myQuery = _query;
             if (navigationProperties != null)
             {
-                foreach (var property in navigationProperties.Split(new char[] { ','}, StringSplitOptions.RemoveEmptyEntries))
+                foreach (var property in navigationProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
                 {
                     myQuery = myQuery.Include(property);
                 }
@@ -64,7 +79,7 @@ namespace TuseAwesomeApiWeb.Repo
             IQueryable<TEntity> myQuery = _query;
 
 
-            if(filterItems != null)
+            if (filterItems != null)
             {
                 return filterItems(myQuery).ToList();
             }

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using TuseAwesomeApiWeb.Data;
 using TuseAwesomeApiWeb.Models;
 using TuseAwesomeApiWeb.Repo.IRepo;
@@ -15,9 +16,11 @@ namespace TuseAwesomeApiWeb.Repo
         }
         public void UpdateItem(Item itemToUpdate)
         {
-            var result = _applicationDbContext.Items.Update(itemToUpdate);
-            result.State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            var result = _applicationDbContext.Items.Attach(itemToUpdate);
+            result.State = EntityState.Modified;
+
             _applicationDbContext.SaveChanges();
+
         }
     }
 }
