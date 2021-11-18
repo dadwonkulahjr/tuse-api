@@ -27,6 +27,10 @@ namespace TuseAwesomeApiWeb
             services.AddControllers()
                 .AddXmlSerializerFormatters();
 
+
+            services.AddRazorPages();
+                    
+
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             services.AddDbContext<ApplicationDbContext>(options =>
@@ -60,6 +64,7 @@ namespace TuseAwesomeApiWeb
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapRazorPages();
             });
         }
     }
