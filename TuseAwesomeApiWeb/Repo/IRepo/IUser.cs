@@ -1,6 +1,9 @@
-﻿namespace TuseAwesomeApiWeb.Repo.IRepo
+﻿using TuseAwesomeApiWeb.Models;
+
+namespace TuseAwesomeApiWeb.Repo.IRepo
 {
-    interface IUser
+    public interface IUser : IGenericRepo<User>
     {
+        void UpdateUser(User userToUpdate);
     }
 }
