@@ -92,8 +92,23 @@ namespace TuseAwesomeApiWeb.Controllers
             return NoContent();
         }
 
+        [HttpDelete("{id}")]
+        public ActionResult Delete(int id)
+        {
+            var deleteExistingUser = _unitOfWork.UserRepository
+                                                .FilterItems(u => u.Id == id)
+                                                .FirstOrDefault();
+
+            if(deleteExistingUser is null)
+            {
+                return NotFound();
+            }
 
 
+            _unitOfWork.UserRepository.Delete(deleteExistingUser);
+            _unitOfWork.Save();
+            return NoContent();
+        }
 
     }
 }
